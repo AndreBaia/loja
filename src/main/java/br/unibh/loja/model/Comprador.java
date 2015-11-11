@@ -14,33 +14,42 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "tb_comprador", uniqueConstraints = @UniqueConstraint(columnNames = "cpf") )
-public class Comprador {	
+public class Comprador {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(length=100,nullable=false)
+
+	@Column(name = "nome", length = 100, nullable = false)
 	private String nome;
-	@Column(length=255,nullable=false)
+
+	@Column(name = "endereco", length = 255, nullable = false)
 	private String endereco;
-	@Column(columnDefinition="char(12)",nullable=false)
+
+	@Column(name = "telefone1", columnDefinition = "char(12)", nullable = false)
 	private String telefone1;
-	@Column(columnDefinition="char(12)",nullable=true)
+
+	@Column(name = "telefone2", columnDefinition = "char(12)", nullable = true)
 	private String telefone2;
-	@Column(columnDefinition="char(11)",nullable=false)
+
+	@Column(name = "cpf", columnDefinition = "char(11)", nullable = false)
 	private String cpf;
-	@Column(length=100,nullable=false)
+
+	@Column(length = 100, nullable = false)
 	private String email;
-	@Column(name="data_nascimento",nullable=true)
-	private Date dataNascimento;
-	@Column(columnDefinition="char(1)",nullable=false)
-	private String sexo;
+
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name="data_cadastro",nullable=false)
+	@Column(name = "data_nascimento", nullable = true)
+	private Date dataNascimento;
+
+	@Column(name = "sexo",columnDefinition = "char(1)", nullable = false)
+	private String sexo;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "data_cadastro", nullable = false)
 	private Date dataDatastro;
-	
+
 	// Métodos construtor, Gets e Sets e toString
-	
 
 	public Long getId() {
 		return id;

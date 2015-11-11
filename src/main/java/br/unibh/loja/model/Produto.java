@@ -13,15 +13,35 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
+@Entity
+@Table(name = "tb_produto", uniqueConstraints = @UniqueConstraint(columnNames = "descricao") )
+
 public class Produto {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@Column(name = "descricao", length = 255, nullable = false)
 	private String descricao;
+
+	@Column(name = "marca", length = 50, nullable = false)
 	private String marca;
+
+	@Column(name = "preco", nullable = false)
 	private BigDecimal preco;
+
+	@Column(name = "cnpj_fornecedor", columnDefinition = "char(14)", nullable = false)
 	private String cnpjFornecedor;
+
+	@Column(name="nome_fornecedor", length = 100, nullable = false)
 	private String nomeFornecedor;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(nullable= false, name = "data_cadastro")
 	private Date dataDatastro;
-	
+
+	// Métodos construtor, Gets e Sets e toString
 
 	public Long getId() {
 		return id;
